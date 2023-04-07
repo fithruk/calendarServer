@@ -1,6 +1,6 @@
 const jsw = require("jsonwebtoken");
 const JWT = require("../models/Jwt");
-const keys = require("../keys/dev");
+const keys = require("../keys/index");
 
 module.exports = async function (req, res, next) {
   const token = req.headers.authorization.split(" ")[1];

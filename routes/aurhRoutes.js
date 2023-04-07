@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const JWT = require("../models/Jwt");
 const { Router } = require("express");
-const keys = require("../keys/dev");
+const keys = require("../keys/index");
 const router = Router();
 
 router.get("/", (req, res) => {

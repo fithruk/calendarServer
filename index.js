@@ -5,7 +5,7 @@ const cors = require("cors");
 const PORT = 5000;
 const tokenMiddleWare = require("./middleWares/tokenMiddleWare");
 const cookieParser = require("cookie-parser");
-const keys = require("./keys");
+const keys = require("./keys/index");
 
 const authRouter = require("./routes/aurhRoutes");
 const eventsRouter = require("./routes/eventsRouter");
