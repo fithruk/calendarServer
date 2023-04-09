@@ -58,6 +58,12 @@ router.post("/login", async (req, res) => {
     return res
       .header("Authorization", "Bearer " + JWTtoken)
       .json({ candidate: JWTtoken });
+  } else {
+    return res.json({
+      type: "Error",
+      msg: "Emeil or password is incorrect",
+      err: "Error",
+    });
   }
 });
 
