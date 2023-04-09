@@ -61,7 +61,7 @@ router.post("/login", async (req, res) => {
   } else {
     return res.json({
       type: "Error",
-      msg: "Emeil or password is incorrect",
+      msg: "Password is incorrect",
       err: "Error",
     });
   }
