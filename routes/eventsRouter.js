@@ -18,13 +18,14 @@ router.get("/", userMiddleWare, async (req, res) => {
 });
 
 router.post("/addEvent", userMiddleWare, async (req, res) => {
-  const { date, dateFrom, dateTo, description, title } = req.body;
+  const { date, dateFrom, dateTo, description, title, category } = req.body;
   const newEvent = new Task({
     date,
     dateFrom,
     dateTo,
     description,
     title,
+    category,
     userId: req.userId,
   });
   await newEvent.save();
