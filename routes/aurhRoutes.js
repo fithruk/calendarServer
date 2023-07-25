@@ -14,7 +14,7 @@ router.post("/registration", async (req, res) => {
   const { email, name, password, confirm } = req.body;
   const candidate = await User.findOne({ email });
   if (candidate) {
-    return res.json({ msg: "Error" });
+    return res.json({ type: "error", msg: `User ${email} is already exist` });
   }
   const hashedPassword = await bcrypt.hash(password, 10);
   const newUser = new User({
@@ -24,7 +24,7 @@ router.post("/registration", async (req, res) => {
   });
   await newUser.save();
   res.status(200).json({
-    type: "Succes",
+    type: "succes",
     msg: "Your accaunt has been succesfully created, please login",
   });
 });
@@ -36,9 +36,9 @@ router.post("/login", async (req, res) => {
 
   if (!candidate) {
     return res.json({
-      type: "Error",
+      type: "error",
       msg: "Emeil or password is incorrect",
-      err: "Error",
+      err: "error",
     });
   }
   const isSame = await bcrypt.compare(password, candidate.password);
@@ -72,7 +72,7 @@ router.get("/logout", async (req, res) => {
   const userId = jwt.decode(token).id;
   await JWT.findOneAndDelete({ userId });
 
-  return res.json({ type: "Succes", msg: "You have successfully logged out" });
+  return res.json({ type: "succes", msg: "You have successfully logged out" });
 });
 
 module.exports = router;
